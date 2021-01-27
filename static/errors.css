@@ -1,0 +1,35 @@
+h1 {
+    position: relative;
+    padding: 0.6em;
+    max-width: 700px;
+    background: #ffcc7a;
+    font-family: "游ゴシック”, “Yu Gothic";
+    transition: .3s;
+}
+
+h1:after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 30px;
+    border: 15px solid transparent;
+    border-top: 15px solid #ffcc7a;
+    width: 0;
+    height: 0;
+}
+
+a {
+    display: block;
+    padding: 1em;
+    max-width: 200px;
+    text-align: center;
+}
+
+a {
+    position: relative;
+    padding: 0.1em 0.3em;
+    display: inline-block;
+    transition: .3s;
+    text-decoration: none;
+    color: #FFA000;
+}
