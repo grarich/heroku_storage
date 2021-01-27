@@ -1,1 +1,70 @@
+import os
+from base64 import b64encode
+from io import BytesIO
 
+from flask import Blueprint, Flask, helpers, render_template, request, send_from_directory, url_for
+from PIL import Image
+
+from convert_image import Convert_Image
+
+app = Flask(__name__)
+
+# URLの最後の"/"がない場合のエラーを回避
+app.url_map.strict_slashes = False
+
+files = []
+
+
+class File:
+    def __init__(self, filename, passwd, file_path):
+        self.filename = filename
+        self.passwd = passwd
+        self.file_path = file_path
+
+
+# 最初に開くページ
+@app.route('/', methods=['GET'])
+def index():
+    return render_template('index.html')
+
+
+# ファイルをPOSTした時の処理
+@app.route('/', methods=['POST'])
+def load_img():
+    global files
+    filename = request.files.get('file').filename
+    file = request.files.get('file')
+    file.save(filename)
+    passwd = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(10))
+    saved = File(filename, passwd, 
+
+    return render_template(
+        'index.html',
+        flag=True,
+        file=file.filename
+    )
+                 
+@app.route('/<str:passwd>')
+def view_file(passwd):
+    global files
+    file = [f for f in files if f.passwd == passwd]
+    if not file:
+        return render_template(
+            'index.html',
+            message='パスが違う！！'
+        )
+    return redirect(url_for(file.file_path))
+
+# 404
+@app.errorhandler(404)
+def page_not_found(_):
+    return render_template('404.html'), 404
+
+# 500
+@app.errorhandler(500)
+def server_error(_):
+    return render_template('500.html'), 500
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=os.environ.get('PORT'))
