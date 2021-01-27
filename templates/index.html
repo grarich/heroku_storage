@@ -1,1 +1,32 @@
-
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+    </head>
+        <link rel="stylesheet" type="text/css" href="/static/index.css" />
+        <titleすとれーーじ</title>
+    </head>
+    <body>
+        <h2 class="msg">ファイルを保存＆ダウンロード☆</h2>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <label class="label_button" for="id_img">
+                <span>ファイルを選択</span>
+                <input type="file" id="file" name="file" class="button" accept="" required>
+            </label>
+            <br>
+            <label class="label_button" for="submit_file">
+                <span>アップロード</span>
+                <input type="submit" class="button" id="submit_file">
+            </label>
+        </form>
+        {%- if flag %}
+        <div align="center">
+            <script>alert('{{ file }} をアップロードしました。')</script>
+            <a herf="{{ file_url }}">ファイルのリンク</a>
+        </div>
+        {%- endif %}
+        {%- if error %}
+            <script>alert('{{ message }}')</script>
+        {%- endif %}
+    </body>
+</html>
