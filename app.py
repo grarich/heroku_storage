@@ -2,8 +2,7 @@ import os
 from base64 import b64encode
 from io import BytesIO
 
-from flask import Blueprint, Flask, helpers, render_template, request, send_from_directory, url_for
-from PIL import Image
+from flask import Flask, render_template, request, url_for
 
 from convert_image import Convert_Image
 
