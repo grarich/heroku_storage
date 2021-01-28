@@ -46,7 +46,8 @@ def save_file():
 @app.route('/<passwd>')
 def view_file(passwd):
     global files
-    print(files)
+    for f in files:
+        print(f.filename, f.passwd, f.file_path)
     print(passwd)
     file = [f for f in files if f.passwd == passwd]
     if not file:
