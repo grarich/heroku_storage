@@ -13,10 +13,9 @@ files = []
 
 
 class File:
-    def __init__(self, filename, passwd, file_path):
+    def __init__(self, filename, passwd):
         self.filename = filename
         self.passwd = passwd
-        self.file_path = file_path
 
 
 # 最初に開くページ
@@ -33,7 +32,7 @@ def save_file():
     file = request.files.get('file')
     file.save(filename)
     passwd = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(10))
-    saved = File(filename, passwd, os.path.abspath(f'./{filename}'))
+    saved = File(filename, passwd)
     files.append(saved)
 
     return render_template(
@@ -46,16 +45,13 @@ def save_file():
 @app.route('/<passwd>')
 def view_file(passwd):
     global files
-    for f in files:
-        print(f.filename, f.passwd, f.file_path)
-    print(passwd)
-    file = [f for f in files if f.passwd == passwd]
+    file = [f for f in files if f.passwd == passwd][0]
     if not file:
         return render_template(
             'index.html',
             message='パスが違う！！'
         )
-    return redirect(url_for(file[0].file_path))
+    return redirect(url_for(file.filename))
 
 # 404
 @app.errorhandler(404)
