@@ -4,8 +4,6 @@ from io import BytesIO
 
 from flask import Flask, render_template, request, url_for
 
-from convert_image import Convert_Image
-
 app = Flask(__name__)
 
 # URLの最後の"/"がない場合のエラーを回避
