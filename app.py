@@ -34,6 +34,7 @@ def save_file():
     file.save(filename)
     passwd = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(10))
     saved = File(filename, passwd, os.path.abspath(f'./{filename}'))
+    files.append(saved)
 
     return render_template(
         'index.html',
