@@ -52,6 +52,7 @@ def view_file(passwd):
             message='パスが違う！！'
         )
     path = send_files[0].filename
+    print(path)
     return send_file(f'./aszifynvilsayv/{path}')
 
 # 404
