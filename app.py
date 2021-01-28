@@ -46,7 +46,7 @@ def save_file():
 def view_file(passwd):
     global files
     send_file = [f for f in files if f.passwd == passwd]
-    if not file:
+    if not send_file:
         return render_template(
             'index.html',
             message='パスが違う！！'
