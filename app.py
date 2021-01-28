@@ -36,7 +36,7 @@ def load_img():
     file = request.files.get('file')
     file.save(filename)
     passwd = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(10))
-    saved = File(filename, passwd, 
+    saved = File(filename, passwd, os.path.abspath(f'./{filename}'))
 
     return render_template(
         'index.html',
