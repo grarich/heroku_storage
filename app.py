@@ -45,13 +45,13 @@ def save_file():
 @app.route('/<passwd>')
 def view_file(passwd):
     global files
-    send_file = [f for f in files if f.passwd == passwd]
-    if not send_file:
+    send_files = [f for f in files if f.passwd == passwd]
+    if not send_files:
         return render_template(
             'index.html',
             message='パスが違う！！'
         )
-    path = send_file[0].filename
+    path = send_files[0].filename
     return send_file(f'./aszifynvilsayv/{path}')
 
 # 404
