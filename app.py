@@ -46,6 +46,8 @@ def save_file():
 @app.route('/<passwd>')
 def view_file(passwd):
     global files
+    print(files)
+    print(passwd)
     file = [f for f in files if f.passwd == passwd]
     if not file:
         return render_template(
