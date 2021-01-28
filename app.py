@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 files = []
-
+os.mkdir('./aszifynvilsayv')
 
 class File:
     def __init__(self, filename, passwd):
