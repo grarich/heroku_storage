@@ -27,7 +27,7 @@ def index():
 
 # ファイルをPOSTした時の処理
 @app.route('/', methods=['POST'])
-def index():
+def save_file():
     global files
     filename = request.files.get('file').filename
     file = request.files.get('file')
