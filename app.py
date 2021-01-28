@@ -38,7 +38,9 @@ def load_img():
     return render_template(
         'index.html',
         flag=True,
-        file=file.filename
+        file=saved.filename,
+        passwd=saved.passwd,
+        file_url=url_for(saved.file_path)
     )
                  
 @app.route('/<passwd>')
