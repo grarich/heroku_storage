@@ -1,6 +1,5 @@
 import os
-from base64 import b64encode
-from io import BytesIO
+import random
 
 from flask import Flask, render_template, request, url_for
 
