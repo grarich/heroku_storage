@@ -27,7 +27,7 @@ def index():
 
 # ファイルをPOSTした時の処理
 @app.route('/', methods=['POST'])
-def load_img():
+def index():
     global files
     filename = request.files.get('file').filename
     file = request.files.get('file')
@@ -39,8 +39,7 @@ def load_img():
         'index.html',
         flag=True,
         file=saved.filename,
-        passwd=saved.passwd,
-        file_url=url_for(saved.file_path)
+        passwd=saved.passwd
     )
                  
 @app.route('/<passwd>')
@@ -52,7 +51,7 @@ def view_file(passwd):
             'index.html',
             message='パスが違う！！'
         )
-    return redirect(url_for(file.file_path))
+    return redirect(url_for(file[0].file_path))
 
 # 404
 @app.errorhandler(404)
