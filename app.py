@@ -41,7 +41,7 @@ def load_img():
         file=file.filename
     )
                  
-@app.route('/<str:passwd>')
+@app.route('/<passwd>')
 def view_file(passwd):
     global files
     file = [f for f in files if f.passwd == passwd]
