@@ -21,6 +21,8 @@
         </form>
         {%- if flag %}
         <div align="center">
+            <p>パスワード {{ passwd }} </p>
+            <a herf="{{ file_url }}">ファイルのリンク</a>
             <script>alert('{{ file }} をアップロードしました。')</script>
         </div>
         {%- endif %}
