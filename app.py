@@ -2,7 +2,7 @@ import os
 import random
 import string
 
-from flask import Flask, render_template, request, redirect, send_file
+from flask import Flask, render_template, request, redirect, send_from_directory
 
 app = Flask(__name__)
 
@@ -52,8 +52,7 @@ def view_file(passwd):
             message='パスが違う！！'
         )
     path = send_files[0].filename
-    print(path)
-    return send_file(f'./aszifynvilsayv/{path}')
+    return send_from_directory('./aszifynvilsayv', path, as_attachment=True, attachment_filename=send_files[0].filename)
 
 # 404
 @app.errorhandler(404)
