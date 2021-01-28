@@ -51,7 +51,7 @@ def view_file(passwd):
             'index.html',
             message='パスが違う！！'
         )
-    return redirect(send_file[0].filename)
+    return redirect(f'view/{send_file[0].filename}')
 
 # 404
 @app.errorhandler(404)
