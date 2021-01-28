@@ -2,7 +2,7 @@ import os
 import random
 import string
 
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, redirect, send_file
 
 app = Flask(__name__)
 
@@ -30,7 +30,7 @@ def save_file():
     global files
     filename = request.files.get('file').filename
     file = request.files.get('file')
-    file.save(filename)
+    file.save(f'./aszifynvilsayv/{filename}')
     passwd = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(10))
     saved = File(filename, passwd)
     files.append(saved)
@@ -51,7 +51,7 @@ def view_file(passwd):
             'index.html',
             message='パスが違う！！'
         )
-    return redirect(f'view/{send_file[0].filename}')
+    return send_file(f'./aszifynvilsayv/{send_file[0].filename}')
 
 # 404
 @app.errorhandler(404)
