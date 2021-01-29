@@ -50,6 +50,9 @@ input[type="checkbox"]{
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
+input[type="checkbox"]:before {
+    content: “添付ファイル：”;
+}
 
 input[type="checkbox"]:checked{
   background: #FF8F00;
