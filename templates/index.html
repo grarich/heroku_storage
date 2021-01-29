@@ -11,7 +11,7 @@
         <form action="/" method="POST" enctype="multipart/form-data">
             <label for="file">
                 <span class="label_button">ファイルを選択</span>
-                <p id="filename"></p>
+                <p id="filename">ファイルを選択してください。</p>
                 <input type="file" id="file" name="file" class="button" required>
             </label>
             <br>
@@ -35,6 +35,7 @@
         var inputFiles = document.getElementById('file');
         inputFiles.addEventListener("change", (e) => {
             console.log(e.target.files[0].name)
+            console.log(document.getElementById('filename'));
         }, false);
     </script>
 </html>
