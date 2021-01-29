@@ -13,7 +13,7 @@
     color: #ffffff;
     font-weight: bold;
     font-size: 20px;
-    font-family: "游ゴシック”, “Yu Gothic";
+    font-family: "游ゴシック", "Yu Gothic";
     background: #ee7800;
     padding: 8px 0;
     border-radius: 20px;
@@ -49,9 +49,6 @@ input[type="file"]{
     outline: none;
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
-}
-input[type="file"]:before {
-    content: “添付ファイル：”;
 }
 
 input[type="file"]:checked{
