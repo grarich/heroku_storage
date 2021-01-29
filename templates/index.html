@@ -14,15 +14,14 @@
                 <input type="file" id="file" name="file" class="button" required>
             </label>
             <p id="filename">ファイルを選択してください。</p>
-            <label class="label_button" for="submit_file">
-                <span>アップロード</span>
+            <label for="submit_file">
+                <span class="label_button">アップロード</span>
                 <input type="submit" class="button" id="submit_file">
             </label>
         </form>
         {%- if flag %}
         <div align="center">
             <p>パスワード {{ passwd }} </p>
-            <a herf="{{ file_url }}">ファイルのリンク</a>
             <script>alert('{{ file }} をアップロードしました。')</script>
         </div>
         {%- endif %}
