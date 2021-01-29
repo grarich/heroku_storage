@@ -30,4 +30,10 @@
             <script>alert('{{ message }}')</script>
         {%- endif %}
     </body>
+    <script>
+        var inputFiles = document.getElementById('file');
+        inputFiles.addEventListener("change", => (e) {
+            console.log(e.target.files)
+        }, false);
+    </script>
 </html>
