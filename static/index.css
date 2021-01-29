@@ -23,6 +23,21 @@
     cursor:pointer;
 }
 
+.filename {
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: “游ゴシック”, “Yu Gothic”;
+    background: #ee7800;
+    padding: 8px 0;
+    border-radius: 16px;
+    max-width: 240px;
+    text-align: center;
+    transition: .3s;
+    cursor:pointer;
+}
+
 .span:hover {
     color: #ffffff;
     border-color: #FF8F00;
@@ -50,15 +65,15 @@ input[type="checkbox"]{
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
-input[type="checkbox"]:before {
+input[type="file"]:before {
     content: “添付ファイル：”;
 }
 
-input[type="checkbox"]:checked{
+input[type="file"]:checked{
   background: #FF8F00;
 }
 
-input[type="checkbox"]:after{
+input[type="file"]:after{
   position: absolute;
   content: "";
   width: 1.5em;
@@ -74,7 +89,7 @@ input[type="checkbox"]:after{
   transition: all .2s ease-in-out;
 }
 
-input[type="checkbox"]:checked:after{
+input[type="file"]:checked:after{
   left: calc(100% - 1.5em);
 }
 
