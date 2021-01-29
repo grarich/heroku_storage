@@ -75,7 +75,7 @@ input[type="file"]:checked:after{
   left: calc(100% - 1.5em);
 }
 
-input[type="file"] {
+input {
     display: none;
     position: relative;
     margin: 8px 0 0 -14px;
