@@ -33,8 +33,8 @@
     <script>
         var inputFiles = document.getElementById('file');
         inputFiles.addEventListener("change", (e) => {
-            console.log(e.target.files[0].name)
-            console.log(document.getElementById('filename'));
+            let filename = e.target.files[0].name
+            document.getElementById('filename').innerHTML = `${filename} を選択中です。<br> アップロードするには下のボタンを押してください。`;
         }, false);
     </script>
 </html>
