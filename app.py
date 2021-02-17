@@ -30,8 +30,8 @@ def save_file():
     global files
     filename = request.files.get('file').filename
     file = request.files.get('file')
-    file.save(f'./{file_path}/{filename}')
     passwd = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(10))
+    file.save(f'./{passwd}/{filename}')
     saved = File(filename, passwd)
     files.append(saved)
 
