@@ -30,7 +30,7 @@ def save_file():
     global files
     filename = request.files.get('file').filename
     file = request.files.get('file')
-    file.save(f'./aszifynvilsayv/{filename}')
+    file.save(f'./{file_path}/{filename}')
     passwd = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(10))
     saved = File(filename, passwd)
     files.append(saved)
@@ -51,8 +51,8 @@ def view_file(passwd):
             'index.html',
             message='パスが違う！！'
         )
-    path = send_files[0].filename
-    return send_from_directory('./aszifynvilsayv', path, as_attachment=True, attachment_filename=send_files[0].filename)
+    path = send_files[0].passwd
+    return send_from_directory(f'./{passwd}', path, as_attachment=True, attachment_filename=send_files[0].filename)
 
 # 404
 @app.errorhandler(404)
