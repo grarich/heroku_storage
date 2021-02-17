@@ -52,7 +52,7 @@ def view_file(passwd):
             'index.html',
             message='パスが違う！！'
         )
-    path = send_files[0].passwd
+    path = send_files[0].filename
     return send_from_directory(f'./{passwd}', path, as_attachment=True, attachment_filename=send_files[0].filename)
 
 # 404
