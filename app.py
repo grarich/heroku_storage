@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 files = []
-os.mkdir('./aszifynvilsayv')
+
 
 class File:
     def __init__(self, filename, passwd):
@@ -31,6 +31,7 @@ def save_file():
     filename = request.files.get('file').filename
     file = request.files.get('file')
     passwd = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(10))
+    os.mkdir(f'./{passwd}')
     file.save(f'./{passwd}/{filename}')
     saved = File(filename, passwd)
     files.append(saved)
