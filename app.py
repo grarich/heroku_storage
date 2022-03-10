@@ -13,6 +13,7 @@ files = []
 
 warn_ip = []
 warn_ip_2 = []
+warn_ip_3 = []
 banned_ip = []
 
 
@@ -54,14 +55,19 @@ def save_file():
 def check_ip(ip_addr):
     if ip_addr in banned_ip:
         return
-    if ip_addr in warn_ip_2:
+    if ip_addr in warn_ip_3:
         banned_ip.append(ip_addr)
+        warn_ip_3.remove(ip_addr)
+        return
+    if ip_addr in warn_ip_2:
+        warn_ip_3.append(ip_addr)
         warn_ip_2.remove(ip_addr)
         return
     if ip_addr in warn_ip:
         warn_ip_2.append(ip_addr)
         warn_ip.remove(ip_addr)
         return
+    warn_ip.append(ip_addr)
 
 
 @app.route('/<passwd>')
@@ -77,6 +83,9 @@ def view_file(passwd):
             'index.html',
             message='パスが違う！！'
         )
+    warn_ip.remove(ip_addr)
+    warn_ip_2.remove(ip_addr)
+    warn_ip_3.remove(ip_addr)
     path = send_files[0].filename
     return send_from_directory(f'./{passwd}', path, as_attachment=True, attachment_filename=send_files[0].filename)
 
