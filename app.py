@@ -2,7 +2,7 @@ import os
 import random
 import string
 
-from flask import Flask, render_template, request, redirect, send_from_directory
+from flask import Flask, abort, render_template, request, redirect, send_from_directory
 
 app = Flask(__name__)
 
@@ -10,6 +10,10 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 files = []
+
+warn_ip = []
+warn_ip_2 = []
+banned_ip = []
 
 
 class File:
@@ -42,12 +46,29 @@ def save_file():
         file=saved.filename,
         passwd=saved.passwd
     )
-                 
+
+
+def check_ip(ip_addr):
+    if ip_addr in banned_ip:
+        return
+    if ip_addr in warn_ip_2:
+        banned_ip.append(ip_addr)
+        warn_ip_2.remove(ip_addr)
+        return
+    if ip_addr in warn_ip:
+        warn_ip_2.append(ip_addr)
+        warn_ip.remove(ip_addr)
+        return
+
+
 @app.route('/<passwd>')
 def view_file(passwd):
     global files
+    if request.remote_addr in banned_ip:
+        return abort(403)
     send_files = [f for f in files if f.passwd == passwd]
     if not send_files:
+        check_ip(request.remote_addr)
         return render_template(
             'index.html',
             message='パスが違う！！'
