@@ -85,9 +85,12 @@ def view_file(passwd):
             message='パスが違う！！'
         )
 
-    warn_ip.remove(ip_addr)
-    warn_ip_2.remove(ip_addr)
-    warn_ip_3.remove(ip_addr)
+    if ip_addr in warn_ip:
+        warn_ip.remove(ip_addr)
+    if ip_addr in warn_ip_2:
+        warn_ip_2.remove(ip_addr)
+    if ip_addr in warn_ip_3:
+        warn_ip_3.remove(ip_addr)
     path = send_files[0].filename
     return send_from_directory(f'./{passwd}', path, as_attachment=True, attachment_filename=send_files[0].filename)
 
