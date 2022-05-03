@@ -74,15 +74,17 @@ def check_ip(ip_addr):
 def view_file(passwd):
     global files
     print(banned_ip)
-    if request.remote_addr in banned_ip:
+    ip_addr = request.remote_addr
+    if ip_addr in banned_ip:
         return abort(403)
     send_files = [f for f in files if f.passwd == passwd]
     if not send_files:
-        check_ip(request.remote_addr)
+        check_ip(ip_addr)
         return render_template(
             'index.html',
             message='パスが違う！！'
         )
+
     warn_ip.remove(ip_addr)
     warn_ip_2.remove(ip_addr)
     warn_ip_3.remove(ip_addr)
